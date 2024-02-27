@@ -2,7 +2,8 @@ package com.Academia.dto;
 
 import com.Academia.model.Aluno;
 
-public record AtualizarAluno(Long id,
+public record AtualizarAluno(
+		Long id,
 		String nome,
 		String sobrenome,		
 		String email,		

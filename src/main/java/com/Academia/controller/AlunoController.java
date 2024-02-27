@@ -2,7 +2,6 @@ package com.Academia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +18,7 @@ import com.Academia.dto.BuscarAluno;
 import com.Academia.dto.CadastrarAluno;
 import com.Academia.service.AlunoService;
 
-import jakarta.transaction.Transactional;
+
 
 @RestController
 @RequestMapping("aluno")
@@ -40,12 +39,7 @@ public class AlunoController {
 	   var busque = service.buscar();
 	   return new ResponseEntity<Iterable<BuscarAluno>>(busque,HttpStatus.OK);
    }
-	@PutMapping("atualiza")
-	@Transactional
-	public ResponseEntity<AtualizarAluno>atualizarInfo(@RequestBody AtualizarAluno Atualizando){
-		var at  = service.atualizar(Atualizando);
-		return new ResponseEntity<AtualizarAluno>(at,HttpStatus.OK);
-	}
+	
 	@DeleteMapping("deletar/{id}")
 	public ResponseEntity<Void>deletar(@PathVariable Long id){
 		 service.excluir(id);
@@ -58,4 +52,13 @@ public class AlunoController {
 		return new ResponseEntity<BuscarAluno>(buscaId,HttpStatus.OK);
 		
 	}
+	@PutMapping("atualiza")
+	public ResponseEntity<AtualizarAluno>atualizarAluno(@RequestBody AtualizarAluno cadastro){		
+		var cadastre =  service.atualizar(cadastro);
+		return ResponseEntity.ok(cadastre);
+		
+	}	
+	
+
+	
 }

@@ -2,7 +2,8 @@ package com.Academia.dto;
 
 import com.Academia.model.Aluno;
 
-public record CadastrarAluno(		
+public record CadastrarAluno(
+		Long id,
 		String nome,
 		String sobrenome,
 		String cpf,
@@ -16,6 +17,7 @@ public record CadastrarAluno(
 
 	public CadastrarAluno(Aluno cad) {
 		this(
+				cad.getId(),
 				cad.getNome(),
 				cad.getSobrenome(),
 				cad.getCpf(),cad.getEmail(),
